@@ -17,6 +17,7 @@
 		C5C765AF262BEC2D00052B31 /* OfferController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C765AE262BEC2D00052B31 /* OfferController.swift */; };
 		C5C765B3262CF84E00052B31 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C765B2262CF84E00052B31 /* CoreDataStack.swift */; };
 		C5C765B8262CF86A00052B31 /* Offer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C765B7262CF86A00052B31 /* Offer+Convenience.swift */; };
+		C5C765BD262CF8C600052B31 /* ibottaiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C5C765BB262CF8C600052B31 /* ibottaiOS.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C5C765AE262BEC2D00052B31 /* OfferController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferController.swift; sourceTree = "<group>"; };
 		C5C765B2262CF84E00052B31 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		C5C765B7262CF86A00052B31 /* Offer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Offer+Convenience.swift"; sourceTree = "<group>"; };
+		C5C765BC262CF8C600052B31 /* Offer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Offer.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			children = (
 				C5C765B2262CF84E00052B31 /* CoreDataStack.swift */,
 				C5C765B7262CF86A00052B31 /* Offer+Convenience.swift */,
+				C5C765BB262CF8C600052B31 /* ibottaiOS.xcdatamodeld */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				C5C765B3262CF84E00052B31 /* CoreDataStack.swift in Sources */,
 				C5C765A8262BEA2200052B31 /* Offers.swift in Sources */,
 				C5C765B8262CF86A00052B31 /* Offer+Convenience.swift in Sources */,
+				C5C765BD262CF8C600052B31 /* ibottaiOS.xcdatamodeld in Sources */,
 				C5C7658C262BDD2C00052B31 /* AppDelegate.swift in Sources */,
 				C5C765AF262BEC2D00052B31 /* OfferController.swift in Sources */,
 				C5C7658E262BDD2C00052B31 /* SceneDelegate.swift in Sources */,
@@ -413,6 +417,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C5C765BB262CF8C600052B31 /* ibottaiOS.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C5C765BC262CF8C600052B31 /* Offer.xcdatamodel */,
+			);
+			currentVersion = C5C765BC262CF8C600052B31 /* Offer.xcdatamodel */;
+			path = ibottaiOS.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C5C76580262BDD2B00052B31 /* Project object */;
 }
