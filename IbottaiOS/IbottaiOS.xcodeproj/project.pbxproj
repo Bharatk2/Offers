@@ -14,6 +14,9 @@
 		C5C76598262BDD3100052B31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C76596262BDD3100052B31 /* LaunchScreen.storyboard */; };
 		C5C765A8262BEA2200052B31 /* Offers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C765A7262BEA2200052B31 /* Offers.swift */; };
 		C5C765AC262BEA4100052B31 /* Offers.json in Resources */ = {isa = PBXBuildFile; fileRef = C5C765AB262BEA4100052B31 /* Offers.json */; };
+		C5C765AF262BEC2D00052B31 /* OfferController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C765AE262BEC2D00052B31 /* OfferController.swift */; };
+		C5C765B3262CF84E00052B31 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C765B2262CF84E00052B31 /* CoreDataStack.swift */; };
+		C5C765B8262CF86A00052B31 /* Offer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C765B7262CF86A00052B31 /* Offer+Convenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		C5C76599262BDD3100052B31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5C765A7262BEA2200052B31 /* Offers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offers.swift; sourceTree = "<group>"; };
 		C5C765AB262BEA4100052B31 /* Offers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Offers.json; sourceTree = "<group>"; };
+		C5C765AE262BEC2D00052B31 /* OfferController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferController.swift; sourceTree = "<group>"; };
+		C5C765B2262CF84E00052B31 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		C5C765B7262CF86A00052B31 /* Offer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Offer+Convenience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,7 @@
 		C5C765A4262BE96700052B31 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C5C765B1262CF83D00052B31 /* Core Data */,
 				C5C765A7262BEA2200052B31 /* Offers.swift */,
 			);
 			path = Model;
@@ -103,6 +110,7 @@
 		C5C765A5262BE96E00052B31 /* Model Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C5C765AE262BEC2D00052B31 /* OfferController.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -116,6 +124,15 @@
 				C5C76599262BDD3100052B31 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		C5C765B1262CF83D00052B31 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				C5C765B2262CF84E00052B31 /* CoreDataStack.swift */,
+				C5C765B7262CF86A00052B31 /* Offer+Convenience.swift */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,8 +206,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5C765B3262CF84E00052B31 /* CoreDataStack.swift in Sources */,
 				C5C765A8262BEA2200052B31 /* Offers.swift in Sources */,
+				C5C765B8262CF86A00052B31 /* Offer+Convenience.swift in Sources */,
 				C5C7658C262BDD2C00052B31 /* AppDelegate.swift in Sources */,
+				C5C765AF262BEC2D00052B31 /* OfferController.swift in Sources */,
 				C5C7658E262BDD2C00052B31 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

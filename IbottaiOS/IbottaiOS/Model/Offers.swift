@@ -6,7 +6,8 @@
 //
 
 import Foundation
-
+struct Offers: Codable {
+    var offers: [Offer]
 struct Offer: Codable {
     var id: String
     var imageURL: String
@@ -33,4 +34,6 @@ struct Offer: Codable {
         terms = try container.decode(String.self, forKey: .terms)
         cashBack = try container.decode(String.self, forKey: .cashBack)
     }
+}
+
 }
