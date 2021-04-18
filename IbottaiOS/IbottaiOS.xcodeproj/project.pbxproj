@@ -12,6 +12,8 @@
 		C5C76593262BDD2C00052B31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C76591262BDD2C00052B31 /* Main.storyboard */; };
 		C5C76595262BDD3100052B31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5C76594262BDD3100052B31 /* Assets.xcassets */; };
 		C5C76598262BDD3100052B31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C76596262BDD3100052B31 /* LaunchScreen.storyboard */; };
+		C5C765A8262BEA2200052B31 /* Offers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C765A7262BEA2200052B31 /* Offers.swift */; };
+		C5C765AC262BEA4100052B31 /* Offers.json in Resources */ = {isa = PBXBuildFile; fileRef = C5C765AB262BEA4100052B31 /* Offers.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		C5C76594262BDD3100052B31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5C76597262BDD3100052B31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5C76599262BDD3100052B31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5C765A7262BEA2200052B31 /* Offers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offers.swift; sourceTree = "<group>"; };
+		C5C765AB262BEA4100052B31 /* Offers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Offers.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 		C5C7658A262BDD2B00052B31 /* IbottaiOS */ = {
 			isa = PBXGroup;
 			children = (
+				C5C765AB262BEA4100052B31 /* Offers.json */,
 				C5C765A1262BE94600052B31 /* Application */,
 				C5C765A4262BE96700052B31 /* Model */,
 				C5C765A5262BE96E00052B31 /* Model Controller */,
@@ -90,6 +95,7 @@
 		C5C765A4262BE96700052B31 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C5C765A7262BEA2200052B31 /* Offers.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5C765AC262BEA4100052B31 /* Offers.json in Resources */,
 				C5C76598262BDD3100052B31 /* LaunchScreen.storyboard in Resources */,
 				C5C76595262BDD3100052B31 /* Assets.xcassets in Resources */,
 				C5C76593262BDD2C00052B31 /* Main.storyboard in Resources */,
@@ -182,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5C765A8262BEA2200052B31 /* Offers.swift in Sources */,
 				C5C7658C262BDD2C00052B31 /* AppDelegate.swift in Sources */,
 				C5C7658E262BDD2C00052B31 /* SceneDelegate.swift in Sources */,
 			);
