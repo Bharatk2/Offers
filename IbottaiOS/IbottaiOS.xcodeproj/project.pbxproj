@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C5C7658C262BDD2C00052B31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C7658B262BDD2C00052B31 /* AppDelegate.swift */; };
 		C5C7658E262BDD2C00052B31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C7658D262BDD2C00052B31 /* SceneDelegate.swift */; };
-		C5C76590262BDD2C00052B31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C7658F262BDD2C00052B31 /* ViewController.swift */; };
 		C5C76593262BDD2C00052B31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C76591262BDD2C00052B31 /* Main.storyboard */; };
 		C5C76595262BDD3100052B31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5C76594262BDD3100052B31 /* Assets.xcassets */; };
 		C5C76598262BDD3100052B31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C76596262BDD3100052B31 /* LaunchScreen.storyboard */; };
@@ -19,7 +18,6 @@
 		C5C76588262BDD2B00052B31 /* IbottaiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IbottaiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C7658B262BDD2C00052B31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5C7658D262BDD2C00052B31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C5C7658F262BDD2C00052B31 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C5C76592262BDD2C00052B31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C5C76594262BDD3100052B31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5C76597262BDD3100052B31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,15 +54,62 @@
 		C5C7658A262BDD2B00052B31 /* IbottaiOS */ = {
 			isa = PBXGroup;
 			children = (
+				C5C765A1262BE94600052B31 /* Application */,
+				C5C765A4262BE96700052B31 /* Model */,
+				C5C765A5262BE96E00052B31 /* Model Controller */,
+				C5C765A2262BE95600052B31 /* Views */,
+				C5C765A3262BE95F00052B31 /* ViewControllers */,
+				C5C765A6262BE97600052B31 /* Resources */,
+			);
+			path = IbottaiOS;
+			sourceTree = "<group>";
+		};
+		C5C765A1262BE94600052B31 /* Application */ = {
+			isa = PBXGroup;
+			children = (
 				C5C7658B262BDD2C00052B31 /* AppDelegate.swift */,
 				C5C7658D262BDD2C00052B31 /* SceneDelegate.swift */,
-				C5C7658F262BDD2C00052B31 /* ViewController.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		C5C765A2262BE95600052B31 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C5C765A3262BE95F00052B31 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C5C765A4262BE96700052B31 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C5C765A5262BE96E00052B31 /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		C5C765A6262BE97600052B31 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				C5C76591262BDD2C00052B31 /* Main.storyboard */,
 				C5C76594262BDD3100052B31 /* Assets.xcassets */,
 				C5C76596262BDD3100052B31 /* LaunchScreen.storyboard */,
 				C5C76599262BDD3100052B31 /* Info.plist */,
 			);
-			path = IbottaiOS;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +182,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5C76590262BDD2C00052B31 /* ViewController.swift in Sources */,
 				C5C7658C262BDD2C00052B31 /* AppDelegate.swift in Sources */,
 				C5C7658E262BDD2C00052B31 /* SceneDelegate.swift in Sources */,
 			);
@@ -288,7 +332,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-				INFOPLIST_FILE = IbottaiOS/Info.plist;
+				INFOPLIST_FILE = IbottaiOS/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +351,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFBD923VWU;
-				INFOPLIST_FILE = IbottaiOS/Info.plist;
+				INFOPLIST_FILE = IbottaiOS/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
