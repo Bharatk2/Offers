@@ -10,6 +10,7 @@ import UIKit
 class OffersCollectionViewCell: UICollectionViewCell {
     
     //MARK: Properties
+    var offerCollectionViewController: OffersCollectionViewController?
     private var backgroundCellView = UIView()
     var nameLabel = UILabel()
     var cashBackLabel = UILabel()
