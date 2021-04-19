@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OffersViewController: UIViewController {
+class OffersViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

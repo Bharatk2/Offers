@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class OffersCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate {
+class OffersCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate, UICollectionViewDelegateFlowLayout {
     
     lazy var fetchedResultsController: NSFetchedResultsController<Offer> = {
         let fetchRequest: NSFetchRequest<Offer> = Offer.fetchRequest()
@@ -28,6 +28,8 @@ class OffersCollectionViewController: UICollectionViewController, NSFetchedResul
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .red
+        
         OfferController.shared.syncOffers { error in
             DispatchQueue.main.async {
                 if let error = error {
@@ -38,6 +40,10 @@ class OffersCollectionViewController: UICollectionViewController, NSFetchedResul
                 }
             }
         }
+        
+        navigationItem.title = "Home"
+        collectionView.backgroundColor = UIColor.white
+        collectionView.register(OffersCollectionViewCell.self, forCellWithReuseIdentifier: "OfferCell")
         
     }
     
@@ -69,6 +75,9 @@ class OffersCollectionViewController: UICollectionViewController, NSFetchedResul
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 200)
+    }
     // MARK: UICollectionViewDelegate
     
     /*
