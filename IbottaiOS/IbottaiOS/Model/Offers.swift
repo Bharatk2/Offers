@@ -9,14 +9,13 @@ import Foundation
 struct OffersRep: Codable {
     var offers: [OfferRepresentation]
     struct OfferRepresentation: Codable, Hashable {
-      
         
     var id: String
     var imageURL: String?
     var name: String
     var description: String
     var terms: String
-    var cashBack: String?
+    var current_value: String?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -24,7 +23,7 @@ struct OffersRep: Codable {
         case name
         case description
         case terms
-        case cashBack = "current_value"
+        case current_value = "current_value"
     }
       
      init(from decoder: Decoder) throws {
@@ -34,7 +33,7 @@ struct OffersRep: Codable {
         name = try container.decode(String.self, forKey: .name)
         description = try container.decode(String.self, forKey: .description)
         terms = try container.decode(String.self, forKey: .terms)
-        cashBack = try container.decodeIfPresent(String.self, forKey: .cashBack)
+        current_value = try container.decodeIfPresent(String.self, forKey: .current_value)
     }
 }
 

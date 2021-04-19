@@ -17,6 +17,7 @@ enum NetworkError: Error {
 public class OfferController {
     var offers: [OffersRep.OfferRepresentation] = []
     let bgContext = CoreDataStack.shared.container.newBackgroundContext()
+    var imageCache = Cache<NSString, AnyObject>()
     var newCache = Cache<String, Offer>()
     let operationQueue = OperationQueue()
     static var shared = OfferController()
@@ -112,9 +113,11 @@ public class OfferController {
         offer.name = rep.name
         offer.descriptions = rep.description
         offer.terms = rep.terms
-        offer.cashback = rep.cashBack
+        offer.cashback = rep.current_value
        
     }
+    
+ 
 }
 class Cache<Key: Hashable, Value> {
     private var cache: [Key: Value] = [ : ]

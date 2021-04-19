@@ -32,7 +32,7 @@ extension Offer {
                   name: representation.name,
                   description: representation.description,
                   terms: representation.terms,
-                  cashback: representation.cashBack ?? "")
+                  cashback: representation.current_value ?? "")
     }
 }
 

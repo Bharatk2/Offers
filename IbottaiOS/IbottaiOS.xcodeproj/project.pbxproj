@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C5BA10CA262E22B300D57BFB /* Dataloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA10C9262E22B300D57BFB /* Dataloader.swift */; };
 		C5C7658C262BDD2C00052B31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C7658B262BDD2C00052B31 /* AppDelegate.swift */; };
 		C5C7658E262BDD2C00052B31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C7658D262BDD2C00052B31 /* SceneDelegate.swift */; };
 		C5C76595262BDD3100052B31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5C76594262BDD3100052B31 /* Assets.xcassets */; };
@@ -19,10 +20,10 @@
 		C5C765BD262CF8C600052B31 /* ibottaiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C5C765BB262CF8C600052B31 /* ibottaiOS.xcdatamodeld */; };
 		C5C765CF262D367A00052B31 /* OfferCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C765CE262D367A00052B31 /* OfferCollectionViewCell.swift */; };
 		C5C765D4262D36C200052B31 /* OffersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C765D3262D36C200052B31 /* OffersCollectionViewController.swift */; };
-		C5C765DB262D4C5500052B31 /* OffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C765DA262D4C5500052B31 /* OffersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C5BA10C9262E22B300D57BFB /* Dataloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataloader.swift; sourceTree = "<group>"; };
 		C5C76588262BDD2B00052B31 /* IbottaiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IbottaiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C7658B262BDD2C00052B31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5C7658D262BDD2C00052B31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,7 +38,6 @@
 		C5C765BC262CF8C600052B31 /* Offer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Offer.xcdatamodel; sourceTree = "<group>"; };
 		C5C765CE262D367A00052B31 /* OfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5C765D3262D36C200052B31 /* OffersCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersCollectionViewController.swift; sourceTree = "<group>"; };
-		C5C765DA262D4C5500052B31 /* OffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C5BA10C8262E22A000D57BFB /* Extensions+Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C5BA10C9262E22B300D57BFB /* Dataloader.swift */,
+			);
+			path = "Extensions+Utilities";
+			sourceTree = "<group>";
+		};
 		C5C7657F262BDD2B00052B31 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +78,7 @@
 		C5C7658A262BDD2B00052B31 /* IbottaiOS */ = {
 			isa = PBXGroup;
 			children = (
+				C5BA10C8262E22A000D57BFB /* Extensions+Utilities */,
 				C5C765AB262BEA4100052B31 /* Offers.json */,
 				C5C765A1262BE94600052B31 /* Application */,
 				C5C765A4262BE96700052B31 /* Model */,
@@ -102,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				C5C765D3262D36C200052B31 /* OffersCollectionViewController.swift */,
-				C5C765DA262D4C5500052B31 /* OffersViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -222,8 +230,8 @@
 				C5C765AF262BEC2D00052B31 /* OfferController.swift in Sources */,
 				C5C7658E262BDD2C00052B31 /* SceneDelegate.swift in Sources */,
 				C5C765CF262D367A00052B31 /* OfferCollectionViewCell.swift in Sources */,
+				C5BA10CA262E22B300D57BFB /* Dataloader.swift in Sources */,
 				C5C765D4262D36C200052B31 /* OffersCollectionViewController.swift in Sources */,
-				C5C765DB262D4C5500052B31 /* OffersViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

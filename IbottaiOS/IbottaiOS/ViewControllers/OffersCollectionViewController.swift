@@ -8,28 +8,33 @@
 import UIKit
 import CoreData
 
-class OffersCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate, UICollectionViewDelegateFlowLayout {
+class OffersCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate, UICollectionViewDelegateFlowLayout  {
     
-    lazy var fetchedResultsController: NSFetchedResultsController<Offer> = {
-        let fetchRequest: NSFetchRequest<Offer> = Offer.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "terms", ascending: true),
-                                        NSSortDescriptor(key: "name", ascending: true)]
-        let context = CoreDataStack.shared.mainContext
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "name", cacheName: nil)
-        frc.delegate = self
-        try! frc.performFetch()
-        return frc
-    }()
+    let customCellIdentifier = "customCellIdentifier"
+    var datasource: UICollectionViewDiffableDataSource<Int, Offer>!
+    var fetchedResultsController: NSFetchedResultsController<Offer>!
+//    lazy var fetchedResultsController: NSFetchedResultsController<Offer> = {
+//        let fetchRequest: NSFetchRequest<Offer> = Offer.fetchRequest()
+//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "terms", ascending: true),
+//                                        NSSortDescriptor(key: "name", ascending: true)]
+//        let context = CoreDataStack.shared.mainContext
+//        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "name", cacheName: nil)
+//        frc.delegate = self
+//        try! frc.performFetch()
+//        return frc
+//    }()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.collectionView.reloadData()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
-        
+        collectionView.delegate = self
+        collectionView.dataSource = self
         OfferController.shared.syncOffers { error in
             DispatchQueue.main.async {
                 if let error = error {
@@ -40,13 +45,51 @@ class OffersCollectionViewController: UICollectionViewController, NSFetchedResul
                 }
             }
         }
-        
+        collectionView.register(OffersCollectionViewCell.self, forCellWithReuseIdentifier: customCellIdentifier)
         navigationItem.title = "Home"
         collectionView.backgroundColor = UIColor.white
-        collectionView.register(OffersCollectionViewCell.self, forCellWithReuseIdentifier: "OfferCell")
-        
+      
+        if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout{
+                layout.minimumLineSpacing = 10
+                layout.minimumInteritemSpacing = 10
+                layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+                let size = CGSize(width:(collectionView!.bounds.width-30)/2, height: 250)
+                layout.itemSize = size
+        }
+//        collectionView.register(OffersCollectionViewCell.self, forCellWithReuseIdentifier: customCellIdentifier)
+//
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .vertical
+//
+//        self.collectionView.collectionViewLayout = layout
+//        self.collectionView?.backgroundColor = .white
+//        let flowlayout = UICollectionViewFlowLayout()
+//        collectionView.accessibilityScroll(.left)
+//
+//        flowlayout.scrollDirection = .vertical
+    
     }
     
+    private func configureCollectionView() {
+            let layout = UICollectionViewFlowLayout()
+            // this is how far it should be from the view
+            layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+            layout.itemSize = CGSize(width: 160, height: 190)
+            layout.scrollDirection = .vertical
+            layout.minimumInteritemSpacing = 10
+            layout.minimumLineSpacing = 10
+            
+            // frame is what is the position and size of the view
+            let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
+            view.addSubview(collectionView)
+            
+            collectionView.register(OffersCollectionViewCell.self, forCellWithReuseIdentifier: customCellIdentifier)
+            
+            collectionView.dataSource = self
+            collectionView.backgroundColor = .white
+            
+            self.collectionView = collectionView
+        }
     /*
      // MARK: - Navigation
      
@@ -61,23 +104,27 @@ class OffersCollectionViewController: UICollectionViewController, NSFetchedResul
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return fetchedResultsController.sections?.count ?? 1
+        return OfferController.shared.offers.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fetchedResultsController.sections?[section].numberOfObjects ?? 0
+        return OfferController.shared.offers.count
     }
     
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OfferCell", for: indexPath) as? OffersCollectionViewCell else { return UICollectionViewCell() }
-        cell.cashBackLabel.text = fetchedResultsController.object(at: indexPath).cashback
-        print(fetchedResultsController.object(at: indexPath))
+         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customCellIdentifier, for: indexPath) as? OffersCollectionViewCell else { return UICollectionViewCell() }
+    
+        cell.nameLabel.text = OfferController.shared.offers[indexPath.row].name
+
+
+        print(OfferController.shared.offers[indexPath.row].current_value ?? "")
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
-    }
+
+   
+ 
     // MARK: UICollectionViewDelegate
     
     /*
