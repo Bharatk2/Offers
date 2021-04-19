@@ -9,17 +9,13 @@ import UIKit
 
 class OfferDetailViewController: UIViewController {
     
-    var offer: Offer? {
-        didSet {
-            updateViews()
-        }
-    }
+    var offer: Offer?
     var delegate: OffersCollectionViewController?
     var offerImageView = UIImageView()
     var productNameLabel = UILabel()
+    var termsLabel = UILabel()
     var favoriteButton = UIButton()
     var productDescription = UILabel()
-    private let offerId = "offerId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +28,7 @@ class OfferDetailViewController: UIViewController {
         offerImageView.contentMode = .scaleToFill
         offerImageView.translatesAutoresizingMaskIntoConstraints = false
         offerImageView.backgroundColor = .gray
+        offerImageView.layer.cornerRadius = 5
         view.addSubview(offerImageView)
         
         offerImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
@@ -39,17 +36,33 @@ class OfferDetailViewController: UIViewController {
         offerImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         offerImageView.heightAnchor.constraint(equalTo: offerImageView.widthAnchor, constant: 1.0).isActive = true
         
+        productNameLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 14)
         productNameLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(productNameLabel)
         productNameLabel.topAnchor.constraint(equalTo: offerImageView.bottomAnchor, constant: 20).isActive = true
         productNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
         productNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
         
+        productDescription.font = UIFont(name: "AvenirNext-DemiBold", size: 12)
+        productDescription.lineBreakMode = .byWordWrapping
+        productDescription.numberOfLines = 0
         productDescription.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(productDescription)
         productDescription.topAnchor.constraint(equalTo: productNameLabel.bottomAnchor, constant: 10).isActive = true
         productDescription.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
         productDescription.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
+        
+        termsLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 12)
+        termsLabel.textColor = .lightGray
+        termsLabel.lineBreakMode = .byWordWrapping
+        termsLabel.numberOfLines = 0
+        termsLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(termsLabel)
+        
+        termsLabel.topAnchor.constraint(equalTo: productDescription.bottomAnchor, constant: 10).isActive = true
+        termsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
+        termsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
+        
         
     }
     
@@ -59,6 +72,7 @@ class OfferDetailViewController: UIViewController {
         
         self.productNameLabel.text = offer.name
         self.productDescription.text = offer.descriptions
+        self.termsLabel.text = offer.terms
         OfferController.shared.getImages(imageURL: offerImage) { image, _ in
             DispatchQueue.main.async {
                 self.offerImageView.image = image
