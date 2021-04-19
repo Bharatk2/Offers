@@ -15,22 +15,30 @@ enum NetworkError: Error {
 }
 
 public class OfferController {
-    @Published var offers = [OffersRep.OfferRepresentation]()
+    var offers: [OffersRep.OfferRepresentation] = []
     let bgContext = CoreDataStack.shared.container.newBackgroundContext()
     var newCache = Cache<String, Offer>()
     let operationQueue = OperationQueue()
-    
+    static var shared = OfferController()
+    private lazy var decoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return decoder
+    }()
     func fetchOffers(completion: @escaping ([OffersRep.OfferRepresentation]?, Error?) -> Void) throws {
         if let fileLocation = Bundle.main.url(forResource: "Offers", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: fileLocation)
-                let jsonDecoder = JSONDecoder()
-                let dataFromJson = try jsonDecoder.decode([OffersRep.OfferRepresentation].self, from: data)
+                print(try decoder.decode([OffersRep.OfferRepresentation].self, from: data))
+                let dataFromJson = try decoder.decode([OffersRep.OfferRepresentation].self, from: data)
+                
                 self.offers = dataFromJson
                 return completion(dataFromJson, nil)
             } catch {
                 return completion(nil, NetworkError.badData("There was an error decoding data"))
             }
+        
         }
     }
     func syncOffers(completion: @escaping (Error?) -> Void) {
@@ -53,7 +61,7 @@ public class OfferController {
                 self.bgContext.perform {
                     for offer in representations {
                         // First if it's in the cache
-                        
+                        print(offer)
                         if self.newCache.value(for: offer.id) != nil {
                             let cachedOffer = self.newCache.value(for: offer.id)!
                           

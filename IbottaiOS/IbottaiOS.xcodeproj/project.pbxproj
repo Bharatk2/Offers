@@ -18,6 +18,9 @@
 		C5C765B3262CF84E00052B31 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C765B2262CF84E00052B31 /* CoreDataStack.swift */; };
 		C5C765B8262CF86A00052B31 /* Offer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C765B7262CF86A00052B31 /* Offer+Convenience.swift */; };
 		C5C765BD262CF8C600052B31 /* ibottaiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C5C765BB262CF8C600052B31 /* ibottaiOS.xcdatamodeld */; };
+		C5C765C5262D1EF300052B31 /* OffersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C765C4262D1EF300052B31 /* OffersTableViewController.swift */; };
+		C5C765C8262D22A700052B31 /* JSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C765C7262D22A700052B31 /* JSONModel.swift */; };
+		C5C765CB262D35FB00052B31 /* OffersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C765CA262D35FB00052B31 /* OffersCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		C5C765B2262CF84E00052B31 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		C5C765B7262CF86A00052B31 /* Offer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Offer+Convenience.swift"; sourceTree = "<group>"; };
 		C5C765BC262CF8C600052B31 /* Offer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Offer.xcdatamodel; sourceTree = "<group>"; };
+		C5C765C4262D1EF300052B31 /* OffersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersTableViewController.swift; sourceTree = "<group>"; };
+		C5C765C7262D22A700052B31 /* JSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONModel.swift; sourceTree = "<group>"; };
+		C5C765CA262D35FB00052B31 /* OffersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,7 @@
 		C5C765A2262BE95600052B31 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C5C765CA262D35FB00052B31 /* OffersCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -96,6 +103,7 @@
 		C5C765A3262BE95F00052B31 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C5C765C4262D1EF300052B31 /* OffersTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -113,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				C5C765AE262BEC2D00052B31 /* OfferController.swift */,
+				C5C765C7262D22A700052B31 /* JSONModel.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -214,8 +223,11 @@
 				C5C765B8262CF86A00052B31 /* Offer+Convenience.swift in Sources */,
 				C5C765BD262CF8C600052B31 /* ibottaiOS.xcdatamodeld in Sources */,
 				C5C7658C262BDD2C00052B31 /* AppDelegate.swift in Sources */,
+				C5C765C8262D22A700052B31 /* JSONModel.swift in Sources */,
 				C5C765AF262BEC2D00052B31 /* OfferController.swift in Sources */,
+				C5C765C5262D1EF300052B31 /* OffersTableViewController.swift in Sources */,
 				C5C7658E262BDD2C00052B31 /* SceneDelegate.swift in Sources */,
+				C5C765CB262D35FB00052B31 /* OffersCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

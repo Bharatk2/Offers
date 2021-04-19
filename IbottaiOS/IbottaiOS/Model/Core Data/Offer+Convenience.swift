@@ -28,11 +28,11 @@ extension Offer {
     
     @discardableResult convenience init?(representation: OffersRep.OfferRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(id: representation.id,
-                  url: representation.imageURL,
+                  url: representation.imageURL ?? "",
                   name: representation.name,
                   descriptions: representation.description,
                   terms: representation.terms,
-                  cashback: representation.cashBack)
+                  cashback: representation.cashBack ?? "")
     }
 }
 
