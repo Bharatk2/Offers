@@ -12,18 +12,32 @@ class OffersCollectionViewController: UICollectionViewController, NSFetchedResul
     
     lazy var fetchedResultsController: NSFetchedResultsController<Offer> = {
         let fetchRequest: NSFetchRequest<Offer> = Offer.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true),
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "terms", ascending: true),
                                         NSSortDescriptor(key: "name", ascending: true)]
         let context = CoreDataStack.shared.mainContext
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "priority", cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "name", cacheName: nil)
         frc.delegate = self
         try! frc.performFetch()
         return frc
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.collectionView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        OfferController.shared.syncOffers { error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    NSLog("Error trying to fetch offers: \(error)")
+                } else {
+                
+                    self.collectionView.reloadData()
+                }
+            }
+        }
         
     }
     
@@ -50,9 +64,8 @@ class OffersCollectionViewController: UICollectionViewController, NSFetchedResul
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OfferCell", for: indexPath) as? OffersCollectionViewCell else { return UICollectionViewCell() }
-        
-        // Configure the cell
-        
+        cell.cashBackLabel.text = fetchedResultsController.object(at: indexPath).cashback
+        print(fetchedResultsController.object(at: indexPath))
         return cell
     }
     

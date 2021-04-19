@@ -12,7 +12,7 @@ extension Offer {
     @discardableResult convenience init(id: String,
                                         url: String,
                                         name: String,
-                                        descriptions: String,
+                                        description: String,
                                         terms: String,
                                         cashback: String,
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
@@ -20,7 +20,7 @@ extension Offer {
         self.id = id
         self.url = url
         self.name = name
-        self.descriptions = descriptions
+        self.descriptions = description
         self.terms = terms
         self.cashback = cashback
     
@@ -30,7 +30,7 @@ extension Offer {
         self.init(id: representation.id,
                   url: representation.imageURL ?? "",
                   name: representation.name,
-                  descriptions: representation.description,
+                  description: representation.description,
                   terms: representation.terms,
                   cashback: representation.cashBack ?? "")
     }

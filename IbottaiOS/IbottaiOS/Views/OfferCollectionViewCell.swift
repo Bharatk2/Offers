@@ -11,8 +11,16 @@ class OffersCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var contentViewBackground: UIView!
     private var backgroundCellView = UIView()
-    private var cashBackLabel = UILabel()
+    var cashBackLabel = UILabel()
    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        handleConstraints()
+    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        handleConstraints()
+    }
     func handleConstraints() {
         // Background view constraints of cell
         let backgroundView = UIView()
