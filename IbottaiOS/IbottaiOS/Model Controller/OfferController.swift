@@ -15,6 +15,8 @@ enum NetworkError: Error {
 }
 
 public class OfferController {
+    
+    // MARK: - Properties
     var offers: [OfferRepresentation] = []
     let bgContext = CoreDataStack.shared.container.newBackgroundContext()
     var imageCache = Cache<NSString, AnyObject>()
@@ -23,6 +25,7 @@ public class OfferController {
     let operationQueue = OperationQueue()
     static var shared = OfferController()
     
+    // MARK: - Computed Properties
     private lazy var decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
@@ -30,9 +33,9 @@ public class OfferController {
         return decoder
     }()
     
+    //MARK: - Initializer
     init(dataLoader: DataLoader = URLSession.shared) {
         self.dataLoader = dataLoader
-        
     }
     
     func fetchOffers(completion: @escaping ([OfferRepresentation]?, Error?) -> Void) throws {
@@ -47,9 +50,16 @@ public class OfferController {
             } catch {
                 return completion(nil, NetworkError.badData("There was an error decoding data"))
             }
-        
+            
         }
     }
+    
+    //MARK: - Get Offers Instructions
+    /*
+     All we need to do is call this function in the view controller viewDidLoad and assign the completion event to the view controller Offers
+     and reload.
+     */
+    
     func syncOffers(completion: @escaping (Error?) -> Void) {
         var representations: [OfferRepresentation] = []
         do {
@@ -59,13 +69,13 @@ public class OfferController {
                     completion(error)
                     return
                 }
-
+                
                 guard let fetchOffers = offers else {
                     completion(NetworkError.badData("offers array couldn't be unwrapped"))
                     return
                 }
                 representations = fetchOffers
-
+                
                 // Use this context to initialize new events into core data.
                 self.bgContext.perform {
                     for offer in representations {
@@ -73,7 +83,7 @@ public class OfferController {
                         print(offer)
                         if self.newCache.value(for: offer.id) != nil {
                             let cachedOffer = self.newCache.value(for: offer.id)!
-                          
+                            
                             self.update(offer: cachedOffer, with: offer)
                             if cachedOffer.id == offer.id {
                                 CoreDataStack.shared.mainContext.delete(cachedOffer)
@@ -81,18 +91,18 @@ public class OfferController {
                         } else {
                             do {
                                 try self.saveOperation(by: offer.id, from: offer)
-                               
+                                
                             } catch {
                                 completion(error)
                                 return
                             }
                         }
-                       
+                        
                     }
                 }// context.perform
                 completion(nil)
             }// Fetch closure
-
+            
         } catch {
             completion(error)
         }
@@ -100,7 +110,7 @@ public class OfferController {
     
     func saveOperation(by userID: String, from representation: OfferRepresentation) throws {
         if let newEvent = Offer(representation: representation, context: bgContext) {
-       
+            
             let handleSaving = BlockOperation {
                 do {
                     // After going through the entire array, try to save context.
@@ -115,16 +125,22 @@ public class OfferController {
         }
     }
     private func update(offer: Offer, with rep: OfferRepresentation) {
-    
+        
         offer.id = rep.id
         offer.url = rep.imageURL
         offer.name = rep.name
         offer.descriptions = rep.description
         offer.terms = rep.terms
         offer.cashback = rep.current_value
-       
+        
     }
     
+    //MARK: - Get Image Instructions
+    /*
+     All we need to do is call this function in the view controller cell,
+     assign the imageURL to the eventImageURL
+     and assign  completion image to the outlet image
+     */
     func getImages(imageURL: String, completion: @escaping (UIImage?, Error?) -> Void) {
         
         let imageString = NSString(string: imageURL)
@@ -152,23 +168,5 @@ public class OfferController {
             completion(image, nil)
             
         })
-        
-    }
-}
-class Cache<Key: Hashable, Value> {
-    private var cache: [Key: Value] = [ : ]
-    private var queue = DispatchQueue(label: "Cache serial queue")
-
-    func cache(value: Value, for key: Key) {
-        queue.async {
-            self.cache[key] = value
-        }
-    }
-
-    func value(for key: Key) -> Value? {
-        queue.sync {
-            return self.cache[key]
-            
-        }
     }
 }
