@@ -6,9 +6,9 @@
 //
 
 import Foundation
-struct Offers: Codable {
-    var offers: [Offer]
-struct Offer: Codable {
+struct OffersRep: Codable {
+    var offers: [OfferRepresentation]
+struct OfferRepresentation: Codable {
     var id: String
     var imageURL: String
     var name: String
