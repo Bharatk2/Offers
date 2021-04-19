@@ -9,10 +9,13 @@ import UIKit
 
 class OffersCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var contentViewBackground: UIView!
+    //MARK: Properties
     private var backgroundCellView = UIView()
     var nameLabel = UILabel()
     var cashBackLabel = UILabel()
+    var productImage = UIImageView()
+    
+    //MARK: Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         handleConstraints()
@@ -22,35 +25,54 @@ class OffersCollectionViewCell: UICollectionViewCell {
         handleConstraints()
     }
     
-   
+    //MARK: Methods
     func handleConstraints() {
-        // Background view constraints of cell
+        //Content View Constraints
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.backgroundColor = .white
+        
+        // Background Setup
         let backgroundView = UIView()
-        backgroundView.backgroundColor = .lightGray
+        backgroundView.backgroundColor = .systemGroupedBackground
         backgroundView.layer.cornerRadius = 5
         backgroundView.contentMode = .left
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(backgroundView)
 
+        //Background Constraints
         backgroundView.topAnchor.constraint(equalTo: topAnchor, constant: 4).isActive = true
         backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 2).isActive = true
         backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -2).isActive = true
-        backgroundView.widthAnchor.constraint(equalTo: backgroundView.heightAnchor, multiplier: 1).isActive = true 
+        backgroundView.widthAnchor.constraint(equalTo: backgroundView.heightAnchor, multiplier: 1).isActive = true
         
-        // Cashback label constraints
+        //Product Image Setup
+        productImage.translatesAutoresizingMaskIntoConstraints = false
+        productImage.contentMode = .scaleAspectFit
+        addSubview(productImage)
+        
+        //Product Image Constraints
+        productImage.widthAnchor.constraint(equalTo: backgroundView.heightAnchor, multiplier: 1).isActive = true
+        productImage.topAnchor.constraint(equalTo: backgroundView.topAnchor).isActive = true
+        productImage.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
+        productImage.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 5).isActive = true
+        productImage.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -5).isActive = true
+        
+        // Cashback label Setup
         cashBackLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 12)
         cashBackLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(cashBackLabel)
+        
+        // Cashback label Constraints
         cashBackLabel.topAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: 10).isActive = true
         cashBackLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 2).isActive = true
         cashBackLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -2).isActive = true
         
+        // Product name setup
         nameLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 12)
         nameLabel.textColor = .lightGray
         addSubview(nameLabel)
+        
+        // Product name constraints
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.topAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: 30).isActive = true
         nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 2).isActive = true

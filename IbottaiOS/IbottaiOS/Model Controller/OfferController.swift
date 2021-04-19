@@ -19,14 +19,22 @@ public class OfferController {
     let bgContext = CoreDataStack.shared.container.newBackgroundContext()
     var imageCache = Cache<NSString, AnyObject>()
     var newCache = Cache<String, Offer>()
+    var dataLoader: DataLoader?
     let operationQueue = OperationQueue()
     static var shared = OfferController()
+    
     private lazy var decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         return decoder
     }()
+    
+    init(dataLoader: DataLoader = URLSession.shared) {
+        self.dataLoader = dataLoader
+        
+    }
+    
     func fetchOffers(completion: @escaping ([OffersRep.OfferRepresentation]?, Error?) -> Void) throws {
         if let fileLocation = Bundle.main.url(forResource: "Offers", withExtension: "json") {
             do {
@@ -117,7 +125,35 @@ public class OfferController {
        
     }
     
- 
+    func getImages(imageURL: String, completion: @escaping (UIImage?, Error?) -> Void) {
+        
+        let imageString = NSString(string: imageURL)
+        if let imageFromCache = imageCache.value(for: imageString) as? UIImage {
+            completion(imageFromCache, nil)
+            return
+        }
+        guard let imageURL = URL(string: imageURL) else {
+            return completion(nil, NetworkError.badURL("The url for image was incorrect"))
+        }
+        
+        dataLoader?.loadData(from: imageURL, completion: { data, _, error in
+            if let error = error {
+                NSLog("error in fetching image :\(error)")
+                return
+            }
+            
+            guard let data = data,
+                  let image = UIImage(data: data) else {
+                completion(nil, NetworkError.badData("there was an error in image data"))
+                return
+            }
+            
+            self.imageCache.cache(value: image, for: imageString)
+            completion(image, nil)
+            
+        })
+        
+    }
 }
 class Cache<Key: Hashable, Value> {
     private var cache: [Key: Value] = [ : ]

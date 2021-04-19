@@ -56,40 +56,9 @@ class OffersCollectionViewController: UICollectionViewController, NSFetchedResul
                 let size = CGSize(width:(collectionView!.bounds.width-30)/2, height: 250)
                 layout.itemSize = size
         }
-//        collectionView.register(OffersCollectionViewCell.self, forCellWithReuseIdentifier: customCellIdentifier)
-//
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .vertical
-//
-//        self.collectionView.collectionViewLayout = layout
-//        self.collectionView?.backgroundColor = .white
-//        let flowlayout = UICollectionViewFlowLayout()
-//        collectionView.accessibilityScroll(.left)
-//
-//        flowlayout.scrollDirection = .vertical
-    
+
     }
     
-    private func configureCollectionView() {
-            let layout = UICollectionViewFlowLayout()
-            // this is how far it should be from the view
-            layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-            layout.itemSize = CGSize(width: 160, height: 190)
-            layout.scrollDirection = .vertical
-            layout.minimumInteritemSpacing = 10
-            layout.minimumLineSpacing = 10
-            
-            // frame is what is the position and size of the view
-            let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
-            view.addSubview(collectionView)
-            
-            collectionView.register(OffersCollectionViewCell.self, forCellWithReuseIdentifier: customCellIdentifier)
-            
-            collectionView.dataSource = self
-            collectionView.backgroundColor = .white
-            
-            self.collectionView = collectionView
-        }
     /*
      // MARK: - Navigation
      
@@ -116,7 +85,12 @@ class OffersCollectionViewController: UICollectionViewController, NSFetchedResul
          guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customCellIdentifier, for: indexPath) as? OffersCollectionViewCell else { return UICollectionViewCell() }
     
         cell.nameLabel.text = OfferController.shared.offers[indexPath.row].name
-
+        guard let imageURL = OfferController.shared.offers[indexPath.row].imageURL else { return cell }
+        OfferController.shared.getImages(imageURL: imageURL) { image, _ in
+            DispatchQueue.main.async {
+                cell.productImage.image = image
+            }
+        }
 
         print(OfferController.shared.offers[indexPath.row].current_value ?? "")
         return cell
