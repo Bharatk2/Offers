@@ -6,17 +6,16 @@
 //
 
 import Foundation
-struct OffersRep: Codable {
-    var offers: [OfferRepresentation]
-    struct OfferRepresentation: Codable, Hashable {
-        
+
+struct OfferRepresentation: Codable, Hashable {
+    
     var id: String
     var imageURL: String?
     var name: String
     var description: String
     var terms: String
     var current_value: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case id
         case imageURL = "url"
@@ -25,8 +24,8 @@ struct OffersRep: Codable {
         case terms
         case current_value = "current_value"
     }
-      
-     init(from decoder: Decoder) throws {
+
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
         imageURL = try container.decodeIfPresent(String.self, forKey: .imageURL)
@@ -37,4 +36,4 @@ struct OffersRep: Codable {
     }
 }
 
-}
+

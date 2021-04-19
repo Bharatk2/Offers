@@ -26,7 +26,7 @@ extension Offer {
     
     }
     
-    @discardableResult convenience init?(representation: OffersRep.OfferRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    @discardableResult convenience init?(representation: OfferRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(id: representation.id,
                   url: representation.imageURL ?? "",
                   name: representation.name,

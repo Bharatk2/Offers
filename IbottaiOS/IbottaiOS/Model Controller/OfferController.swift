@@ -15,7 +15,7 @@ enum NetworkError: Error {
 }
 
 public class OfferController {
-    var offers: [OffersRep.OfferRepresentation] = []
+    var offers: [OfferRepresentation] = []
     let bgContext = CoreDataStack.shared.container.newBackgroundContext()
     var imageCache = Cache<NSString, AnyObject>()
     var newCache = Cache<String, Offer>()
@@ -35,12 +35,12 @@ public class OfferController {
         
     }
     
-    func fetchOffers(completion: @escaping ([OffersRep.OfferRepresentation]?, Error?) -> Void) throws {
+    func fetchOffers(completion: @escaping ([OfferRepresentation]?, Error?) -> Void) throws {
         if let fileLocation = Bundle.main.url(forResource: "Offers", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: fileLocation)
-                print(try decoder.decode([OffersRep.OfferRepresentation].self, from: data))
-                let dataFromJson = try decoder.decode([OffersRep.OfferRepresentation].self, from: data)
+                print(try decoder.decode([OfferRepresentation].self, from: data))
+                let dataFromJson = try decoder.decode([OfferRepresentation].self, from: data)
                 
                 self.offers = dataFromJson
                 return completion(dataFromJson, nil)
@@ -51,7 +51,7 @@ public class OfferController {
         }
     }
     func syncOffers(completion: @escaping (Error?) -> Void) {
-        var representations: [OffersRep.OfferRepresentation] = []
+        var representations: [OfferRepresentation] = []
         do {
             try fetchOffers { offers, error in
                 if let error = error {
@@ -98,7 +98,7 @@ public class OfferController {
         }
     }
     
-    func saveOperation(by userID: String, from representation: OffersRep.OfferRepresentation) throws {
+    func saveOperation(by userID: String, from representation: OfferRepresentation) throws {
         if let newEvent = Offer(representation: representation, context: bgContext) {
        
             let handleSaving = BlockOperation {
@@ -114,7 +114,7 @@ public class OfferController {
             newCache.cache(value: newEvent, for: userID)
         }
     }
-    private func update(offer: Offer, with rep: OffersRep.OfferRepresentation) {
+    private func update(offer: Offer, with rep: OfferRepresentation) {
     
         offer.id = rep.id
         offer.url = rep.imageURL
