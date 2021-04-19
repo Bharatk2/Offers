@@ -52,7 +52,7 @@ public class OfferController {
                 }
 
                 guard let fetchOffers = offers else {
-                    completion(NetworkError.badData("Posts array couldn't be unwrapped"))
+                    completion(NetworkError.badData("offers array couldn't be unwrapped"))
                     return
                 }
                 representations = fetchOffers
