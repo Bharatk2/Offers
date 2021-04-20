@@ -88,7 +88,7 @@ class OffersCollectionViewController: UICollectionViewController, UICollectionVi
         let horizontalInsets = collectionView.contentInset.left + collectionView.contentInset.right
         let itemSpacing = (collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing * (horizontalOffers - 1)
         let width = (collectionView.frame.width - horizontalInsets - itemSpacing) / horizontalOffers
-        return CGSize(width: width, height: width * 1.2)
+        return CGSize(width: width, height: width * 1.3)
     }
     
     //MARK: - UICollectionViewDataSource

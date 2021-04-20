@@ -87,7 +87,7 @@ class OffersCollectionViewCell: UICollectionViewCell {
         favoriteButton.setImage(UIImage(named: "iconLike"), for: .normal)
         favoriteButton.isHidden = true 
         addSubview(favoriteButton)
-        favoriteButton.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10).isActive = true
+        favoriteButton.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 2).isActive = true
         favoriteButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -10).isActive = true
     }
     
