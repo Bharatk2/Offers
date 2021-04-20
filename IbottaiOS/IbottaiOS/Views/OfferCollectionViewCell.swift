@@ -62,6 +62,7 @@ class OffersCollectionViewCell: UICollectionViewCell {
         
         // Cashback label Setup
         cashBackLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 12)
+        cashBackLabel.textColor = UIColor(named: "#4A4A4A")
         cashBackLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(cashBackLabel)
         
@@ -71,8 +72,8 @@ class OffersCollectionViewCell: UICollectionViewCell {
         cashBackLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -2).isActive = true
         
         // Product name setup
-        nameLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 12)
-        nameLabel.textColor = .lightGray
+        nameLabel.font = UIFont(name: "AvenirNext-Regular", size: 11)
+        nameLabel.textColor = UIColor(named: "#4A4A4A")
         addSubview(nameLabel)
         
         // Product name constraints
