@@ -15,7 +15,7 @@ class OffersCollectionViewCell: UICollectionViewCell {
     var nameLabel = UILabel()
     var cashBackLabel = UILabel()
     var productImage = UIImageView()
-    
+    var favoriteButton = UIButton()
     //MARK: Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,6 +58,7 @@ class OffersCollectionViewCell: UICollectionViewCell {
         productImage.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 5).isActive = true
         productImage.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -5).isActive = true
         
+        
         // Cashback label Setup
         cashBackLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 12)
         cashBackLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +79,14 @@ class OffersCollectionViewCell: UICollectionViewCell {
         nameLabel.topAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: 30).isActive = true
         nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 2).isActive = true
         nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -2).isActive = true
-      
+        
+        // Favorite Image Setup
+        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
+        favoriteButton.setImage(UIImage(named: "iconLike"), for: .normal)
+        favoriteButton.isHidden = true 
+        addSubview(favoriteButton)
+        favoriteButton.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10).isActive = true
+        favoriteButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -10).isActive = true
     }
     
 }

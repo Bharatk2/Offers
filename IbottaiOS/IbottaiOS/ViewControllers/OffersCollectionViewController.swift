@@ -16,10 +16,9 @@ class OffersCollectionViewController: UICollectionViewController, UICollectionVi
     var ops: [BlockOperation] = []
     lazy var fetchedResultsController: NSFetchedResultsController<Offer> = {
         let fetchRequest: NSFetchRequest<Offer> = Offer.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "terms", ascending: true),
-                                        NSSortDescriptor(key: "name", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         let context = CoreDataStack.shared.mainContext
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "name", cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         frc.delegate = self
         do {
             
@@ -90,7 +89,12 @@ class OffersCollectionViewController: UICollectionViewController, UICollectionVi
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customCellIdentifier, for: indexPath) as? OffersCollectionViewCell else { return UICollectionViewCell() }
-    
+        if fetchedResultsController.object(at: indexPath).isFavorited {
+            cell.favoriteButton.isHidden = false
+        } else {
+            cell.favoriteButton.isHidden = true 
+        }
+        
         cell.nameLabel.text = fetchedResultsController.object(at: indexPath).name
         guard let imageURL = fetchedResultsController.object(at: indexPath).url else { return cell }
         OfferController.shared.getImages(imageURL: imageURL) { image, _ in

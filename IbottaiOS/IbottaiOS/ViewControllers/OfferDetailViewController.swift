@@ -22,8 +22,6 @@ class OfferDetailViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setUpSubviews()
-        guard let offer = offer else { return }
-        favoriteButton.setImage(offer.isFavorited ? UIImage(named: "iconLike") : UIImage(named: "Like"), for: .normal)
         updateViews()
     }
   
@@ -67,7 +65,7 @@ class OfferDetailViewController: UIViewController {
         termsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
         termsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
         
-        favoriteButton.setImage(UIImage(named: "iconLike"), for: .normal)
+        
         favoriteButton.addTarget(self, action: #selector(setFavoriteTarget), for: .touchUpInside)
         favoriteButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(favoriteButton)
@@ -81,6 +79,7 @@ class OfferDetailViewController: UIViewController {
         offer.isFavorited.toggle()
       
         favoriteButton.setImage(offer.isFavorited ? UIImage(named: "iconLike") : UIImage(named: "Like"), for: .normal)
+       
     }
 
     private func updateViews() {
@@ -88,6 +87,7 @@ class OfferDetailViewController: UIViewController {
               let offerImage = offer.url else { return }
        
         self.productNameLabel.text = offer.name
+        favoriteButton.setImage(offer.isFavorited ? UIImage(named: "iconLike") : UIImage(named: "Like"), for: .normal)
         self.productDescription.text = offer.descriptions
         self.termsLabel.text = offer.terms
         OfferController.shared.getImages(imageURL: offerImage) { image, _ in
