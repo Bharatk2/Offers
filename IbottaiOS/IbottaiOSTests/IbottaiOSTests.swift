@@ -6,27 +6,36 @@
 //
 
 import XCTest
-
+@testable import IbottaiOS
 class IbottaiOSTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+    
+    let timeout: TimeInterval = 5
+    
+    func testFetchAllOffers() throws {
+        let expectation = self.expectation(description: "fetching offer is succesfull")
+        try OfferController.shared.fetchOffers { offers, error in
+            XCTAssertNil(error)
+            XCTAssert((offers != nil))
+            print("these are succesfull events: \(offers)")
+            expectation.fulfill()
         }
+        wait(for: [expectation], timeout: timeout)
+    }
+    
+    func testDecoding() throws {
+        guard let fileLocation = Bundle.main.url(forResource: "Offers", withExtension: "json") else { return }
+        let expectation = self.expectation(description: "Data decodes from the json")
+        do {
+            let fileData = try Data(contentsOf: fileLocation)
+            let data = try XCTUnwrap(fileData)
+            XCTAssertNoThrow(
+                try JSONDecoder().decode([OfferRepresentation].self, from: data)
+                
+            )
+            print(data)
+        } catch { }
+        expectation.fulfill()
+        waitForExpectations(timeout: timeout)
     }
 
 }
