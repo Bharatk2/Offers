@@ -13,7 +13,7 @@ class OffersCollectionViewController: UICollectionViewController, UICollectionVi
     //MARK: Properties
     let customCellIdentifier = "customCellIdentifier"
     var ops: [BlockOperation] = []
-    
+    var horizontalOffers: CGFloat = 2
     //MARK: Computed Properties
     lazy var fetchedResultsController: NSFetchedResultsController<Offer> = {
         let fetchRequest: NSFetchRequest<Offer> = Offer.fetchRequest()
@@ -49,21 +49,21 @@ class OffersCollectionViewController: UICollectionViewController, UICollectionVi
         collectionView.dataSource = self
         fetchOffers()
         registerCollectionViewCell()
-        collectionViewLayOutDisplay()
+//        collectionViewLayOutDisplay()
         
     }
     
-    // Display of the grid
-    func collectionViewLayOutDisplay() {
-        if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout{
-            layout.minimumLineSpacing = 10
-            layout.minimumInteritemSpacing = 10
-            layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-            let size = CGSize(width:(collectionView!.bounds.width-30)/2, height: 250)
-            layout.itemSize = size
-        }
-    }
-    
+//    // Display of the grid
+//    func collectionViewLayOutDisplay() {
+//        if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout{
+//            layout.minimumLineSpacing = 10
+//            layout.minimumInteritemSpacing = 10
+//            layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+//            let size = CGSize(width:(collectionView!.bounds.width-30)/2, height: 250)
+//            layout.itemSize = size
+//        }
+//    }
+//    
     func registerCollectionViewCell() {
         collectionView.register(OffersCollectionViewCell.self, forCellWithReuseIdentifier: customCellIdentifier)
         navigationItem.title = "Home"
@@ -83,6 +83,15 @@ class OffersCollectionViewController: UICollectionViewController, UICollectionVi
             }
         }
     }
+    // Adjusting cell view in the screen through collectionviewflowlayout width and height.
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let horizontalInsets = collectionView.contentInset.left + collectionView.contentInset.right
+        let itemSpacing = (collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing * (horizontalOffers - 1)
+        let width = (collectionView.frame.width - horizontalInsets - itemSpacing) / horizontalOffers
+        return CGSize(width: width, height: width * 1.2)
+    }
+    
+    //MARK: - UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
