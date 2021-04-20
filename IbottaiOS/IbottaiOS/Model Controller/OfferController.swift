@@ -90,6 +90,7 @@ public class OfferController {
                                 DispatchQueue.main.async {
                                     CoreDataStack.shared.mainContext.delete(cachedOffer)
                                 }
+
                             }
                         } else {
                             do {
