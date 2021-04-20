@@ -14,7 +14,7 @@ extension Offer {
                                         name: String,
                                         description: String,
                                         terms: String,
-                                        cashback: String,
+                                        cashBack: String,
                                         isFavorited: Bool = false,
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
@@ -23,19 +23,22 @@ extension Offer {
         self.name = name
         self.descriptions = description
         self.terms = terms
-        self.cashback = cashback
+        self.cashBack = cashBack
         self.isFavorited = isFavorited
     
     }
     
     @discardableResult convenience init?(representation: OfferRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        
         self.init(id: representation.id,
                   url: representation.imageURL ?? "",
                   name: representation.name,
                   description: representation.description,
                   terms: representation.terms,
-                  cashback: representation.current_value ?? "")
+                  cashBack: representation.current_value ?? "")
     }
+    
+    
 }
 
 

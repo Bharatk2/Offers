@@ -131,7 +131,7 @@ public class OfferController {
         offer.name = rep.name
         offer.descriptions = rep.description
         offer.terms = rep.terms
-        offer.cashback = rep.current_value
+        offer.cashBack = rep.current_value
         
     }
     

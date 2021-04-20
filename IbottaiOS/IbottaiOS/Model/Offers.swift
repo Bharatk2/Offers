@@ -22,7 +22,7 @@ struct OfferRepresentation: Codable, Hashable {
         case name
         case description
         case terms
-        case current_value = "current_value"
+        case current_value
     }
 
     init(from decoder: Decoder) throws {

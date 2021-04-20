@@ -10,6 +10,7 @@
 		C5BA10CA262E22B300D57BFB /* Dataloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA10C9262E22B300D57BFB /* Dataloader.swift */; };
 		C5BA10CE262E27E800D57BFB /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA10CD262E27E800D57BFB /* Cache.swift */; };
 		C5BA10D1262E284500D57BFB /* OfferDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA10D0262E284500D57BFB /* OfferDetailViewController.swift */; };
+		C5BA10EA262E6C1900D57BFB /* IbottaiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA10E9262E6C1900D57BFB /* IbottaiOSTests.swift */; };
 		C5C7658C262BDD2C00052B31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C7658B262BDD2C00052B31 /* AppDelegate.swift */; };
 		C5C7658E262BDD2C00052B31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C7658D262BDD2C00052B31 /* SceneDelegate.swift */; };
 		C5C76595262BDD3100052B31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5C76594262BDD3100052B31 /* Assets.xcassets */; };
@@ -24,10 +25,23 @@
 		C5C765D4262D36C200052B31 /* OffersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C765D3262D36C200052B31 /* OffersCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C5BA10EC262E6C1900D57BFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5C76580262BDD2B00052B31 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C5C76587262BDD2B00052B31;
+			remoteInfo = IbottaiOS;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		C5BA10C9262E22B300D57BFB /* Dataloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataloader.swift; sourceTree = "<group>"; };
 		C5BA10CD262E27E800D57BFB /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		C5BA10D0262E284500D57BFB /* OfferDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailViewController.swift; sourceTree = "<group>"; };
+		C5BA10E7262E6C1900D57BFB /* IbottaiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IbottaiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5BA10E9262E6C1900D57BFB /* IbottaiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IbottaiOSTests.swift; sourceTree = "<group>"; };
+		C5BA10EB262E6C1900D57BFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5C76588262BDD2B00052B31 /* IbottaiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IbottaiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C7658B262BDD2C00052B31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5C7658D262BDD2C00052B31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +59,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C5BA10E4262E6C1900D57BFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5C76585262BDD2B00052B31 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -64,10 +85,20 @@
 			path = "Extensions+Utilities";
 			sourceTree = "<group>";
 		};
+		C5BA10E8262E6C1900D57BFB /* IbottaiOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				C5BA10E9262E6C1900D57BFB /* IbottaiOSTests.swift */,
+				C5BA10EB262E6C1900D57BFB /* Info.plist */,
+			);
+			path = IbottaiOSTests;
+			sourceTree = "<group>";
+		};
 		C5C7657F262BDD2B00052B31 = {
 			isa = PBXGroup;
 			children = (
 				C5C7658A262BDD2B00052B31 /* IbottaiOS */,
+				C5BA10E8262E6C1900D57BFB /* IbottaiOSTests */,
 				C5C76589262BDD2B00052B31 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				C5C76588262BDD2B00052B31 /* IbottaiOS.app */,
+				C5BA10E7262E6C1900D57BFB /* IbottaiOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,6 +193,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C5BA10E6262E6C1900D57BFB /* IbottaiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C5BA10EE262E6C1900D57BFB /* Build configuration list for PBXNativeTarget "IbottaiOSTests" */;
+			buildPhases = (
+				C5BA10E3262E6C1900D57BFB /* Sources */,
+				C5BA10E4262E6C1900D57BFB /* Frameworks */,
+				C5BA10E5262E6C1900D57BFB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C5BA10ED262E6C1900D57BFB /* PBXTargetDependency */,
+			);
+			name = IbottaiOSTests;
+			productName = IbottaiOSTests;
+			productReference = C5BA10E7262E6C1900D57BFB /* IbottaiOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C5C76587262BDD2B00052B31 /* IbottaiOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5C7659C262BDD3100052B31 /* Build configuration list for PBXNativeTarget "IbottaiOS" */;
@@ -187,6 +237,10 @@
 				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
+					C5BA10E6262E6C1900D57BFB = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = C5C76587262BDD2B00052B31;
+					};
 					C5C76587262BDD2B00052B31 = {
 						CreatedOnToolsVersion = 12.3;
 					};
@@ -206,11 +260,19 @@
 			projectRoot = "";
 			targets = (
 				C5C76587262BDD2B00052B31 /* IbottaiOS */,
+				C5BA10E6262E6C1900D57BFB /* IbottaiOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C5BA10E5262E6C1900D57BFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5C76586262BDD2B00052B31 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -224,6 +286,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C5BA10E3262E6C1900D57BFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5BA10EA262E6C1900D57BFB /* IbottaiOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5C76584262BDD2B00052B31 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -245,6 +315,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C5BA10ED262E6C1900D57BFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C5C76587262BDD2B00052B31 /* IbottaiOS */;
+			targetProxy = C5BA10EC262E6C1900D57BFB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		C5C76596262BDD3100052B31 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -257,6 +335,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C5BA10EF262E6C1900D57BFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MFBD923VWU;
+				INFOPLIST_FILE = IbottaiOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Bharat.IbottaiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IbottaiOS.app/IbottaiOS";
+			};
+			name = Debug;
+		};
+		C5BA10F0262E6C1900D57BFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MFBD923VWU;
+				INFOPLIST_FILE = IbottaiOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Bharat.IbottaiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IbottaiOS.app/IbottaiOS";
+			};
+			name = Release;
+		};
 		C5C7659A262BDD3100052B31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -414,6 +532,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C5BA10EE262E6C1900D57BFB /* Build configuration list for PBXNativeTarget "IbottaiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5BA10EF262E6C1900D57BFB /* Debug */,
+				C5BA10F0262E6C1900D57BFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C5C76583262BDD2B00052B31 /* Build configuration list for PBXProject "IbottaiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
