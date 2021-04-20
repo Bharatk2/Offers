@@ -4,11 +4,12 @@
         <attribute name="cashback" optional="YES" attributeType="String"/>
         <attribute name="descriptions" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="isFavorited" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="terms" optional="YES" attributeType="String"/>
         <attribute name="url" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Offer" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Offer" positionX="-63" positionY="-18" width="128" height="134"/>
     </elements>
 </model>

@@ -15,6 +15,7 @@ extension Offer {
                                         description: String,
                                         terms: String,
                                         cashback: String,
+                                        isFavorited: Bool = false,
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.id = id
@@ -23,6 +24,7 @@ extension Offer {
         self.descriptions = description
         self.terms = terms
         self.cashback = cashback
+        self.isFavorited = isFavorited
     
     }
     

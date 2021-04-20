@@ -14,23 +14,27 @@ class OfferDetailViewController: UIViewController {
     var offerImageView = UIImageView()
     var productNameLabel = UILabel()
     var termsLabel = UILabel()
-    var favoriteButton = UIButton()
     var productDescription = UILabel()
+    let favoriteButton = UIButton()
+    var barButton = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setUpSubviews()
+        guard let offer = offer else { return }
+        favoriteButton.setImage(offer.isFavorited ? UIImage(named: "iconLike") : UIImage(named: "Like"), for: .normal)
         updateViews()
     }
-    
+  
     private func setUpSubviews() {
+       
         offerImageView.contentMode = .scaleToFill
         offerImageView.translatesAutoresizingMaskIntoConstraints = false
         offerImageView.backgroundColor = .gray
         offerImageView.layer.cornerRadius = 5
         view.addSubview(offerImageView)
-        
+   
         offerImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
         offerImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         offerImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
@@ -63,13 +67,26 @@ class OfferDetailViewController: UIViewController {
         termsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
         termsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
         
-        
+        favoriteButton.setImage(UIImage(named: "iconLike"), for: .normal)
+        favoriteButton.addTarget(self, action: #selector(setFavoriteTarget), for: .touchUpInside)
+        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(favoriteButton)
+        favoriteButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
+        favoriteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+       
     }
     
+    @objc func setFavoriteTarget() {
+        guard let offer = offer else { return }
+        offer.isFavorited.toggle()
+      
+        favoriteButton.setImage(offer.isFavorited ? UIImage(named: "iconLike") : UIImage(named: "Like"), for: .normal)
+    }
+
     private func updateViews() {
         guard let offer = offer,
               let offerImage = offer.url else { return }
-        
+       
         self.productNameLabel.text = offer.name
         self.productDescription.text = offer.descriptions
         self.termsLabel.text = offer.terms
