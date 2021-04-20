@@ -29,7 +29,6 @@ public class OfferController {
     private lazy var decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
         return decoder
     }()
     
@@ -38,13 +37,14 @@ public class OfferController {
         self.dataLoader = dataLoader
     }
     
+    // Using the closure in the parameter to use the decoded offer in the sync offers function
     func fetchOffers(completion: @escaping ([OfferRepresentation]?, Error?) -> Void) throws {
         if let fileLocation = Bundle.main.url(forResource: "Offers", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: fileLocation)
                 print(try decoder.decode([OfferRepresentation].self, from: data))
                 let dataFromJson = try decoder.decode([OfferRepresentation].self, from: data)
-                
+            
                 self.offers = dataFromJson
                 return completion(dataFromJson, nil)
             } catch {
@@ -56,7 +56,7 @@ public class OfferController {
     
     //MARK: - Get Offers Instructions
     /*
-     All we need to do is call this function in the view controller viewDidLoad and assign the completion event to the view controller Offers
+     All we need to do is call this function in the view controller viewDidLoad and assign the completion Offer to the view controller Offers
      and reload.
      */
     
@@ -76,17 +76,20 @@ public class OfferController {
                 }
                 representations = fetchOffers
                 
-                // Use this context to initialize new events into core data.
+                // Use this context to initialize new offers into core data.
                 self.bgContext.perform {
                     for offer in representations {
                         // First if it's in the cache
                         print(offer)
+                        // this will help us to block duplicate offers in the coredata
                         if self.newCache.value(for: offer.id) != nil {
                             let cachedOffer = self.newCache.value(for: offer.id)!
                             
                             self.update(offer: cachedOffer, with: offer)
                             if cachedOffer.id == offer.id {
-                                CoreDataStack.shared.mainContext.delete(cachedOffer)
+                                DispatchQueue.main.async {
+                                    CoreDataStack.shared.mainContext.delete(cachedOffer)
+                                }
                             }
                         } else {
                             do {
@@ -109,7 +112,7 @@ public class OfferController {
     }
     
     func saveOperation(by userID: String, from representation: OfferRepresentation) throws {
-        if let newEvent = Offer(representation: representation, context: bgContext) {
+        if let newOffer = Offer(representation: representation, context: bgContext) {
             
             let handleSaving = BlockOperation {
                 do {
@@ -121,7 +124,7 @@ public class OfferController {
                 }
             }
             operationQueue.addOperations([handleSaving], waitUntilFinished: false)
-            newCache.cache(value: newEvent, for: userID)
+            newCache.cache(value: newOffer, for: userID)
         }
     }
     private func update(offer: Offer, with rep: OfferRepresentation) {
@@ -138,7 +141,7 @@ public class OfferController {
     //MARK: - Get Image Instructions
     /*
      All we need to do is call this function in the view controller cell,
-     assign the imageURL to the eventImageURL
+     assign the imageURL to the offerImageURL
      and assign  completion image to the outlet image
      */
     func getImages(imageURL: String, completion: @escaping (UIImage?, Error?) -> Void) {

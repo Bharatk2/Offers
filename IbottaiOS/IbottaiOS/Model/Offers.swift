@@ -32,7 +32,7 @@ struct OfferRepresentation: Codable, Hashable {
         name = try container.decode(String.self, forKey: .name)
         description = try container.decode(String.self, forKey: .description)
         terms = try container.decode(String.self, forKey: .terms)
-        current_value = try container.decodeIfPresent(String.self, forKey: .current_value)
+        current_value = try! container.decodeIfPresent(String.self, forKey: .current_value)
     }
 }
 

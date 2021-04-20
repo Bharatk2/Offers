@@ -24,7 +24,7 @@ extension URLSession: DataLoader {
             // We can choose to handle the usual checking for data or error in here.
             // But we can also worry about handling that within whichever controller uses these methods.
             // This gives rooom for custom error handling and data handling if the app was much larger in scale.
-            // Here we'll need it because we're handling Events and image network requests separately.
+            // Here we'll need it because we're handling Offers and image network requests separately.
             completion(data, response, error)
         }.resume()
     }

@@ -16,7 +16,7 @@ class IbottaiOSTests: XCTestCase {
         try OfferController.shared.fetchOffers { offers, error in
             XCTAssertNil(error)
             XCTAssert((offers != nil))
-            print("these are succesfull events: \(offers)")
+            print("these are succesfull offers: \(offers)")
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: timeout)

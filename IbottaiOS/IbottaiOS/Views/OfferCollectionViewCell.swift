@@ -16,6 +16,7 @@ class OffersCollectionViewCell: UICollectionViewCell {
     var cashBackLabel = UILabel()
     var productImage = UIImageView()
     var favoriteButton = UIButton()
+    
     //MARK: Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
