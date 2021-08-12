@@ -1,4 +1,4 @@
-# iBottaiOS
+# Product Offers
 <br />
 - Programmatic Constraints, Favorite Offer/UnFavorite Offer, Persisting Favorite Offers.
 <p align="row">
